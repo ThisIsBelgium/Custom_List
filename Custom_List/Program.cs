@@ -10,6 +10,10 @@ namespace Custom_List
     {
         static void Main(string[] args)
         {
+            List<TestObject> list = new List<TestObject>();
+            list.Add(new TestObject());
+            list.RemoveAt(0);
+
         }
     }
 }

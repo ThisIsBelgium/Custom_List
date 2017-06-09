@@ -1,1 +1,6 @@
 C:\Users\wheeler\Desktop\School\C# git\Custom_List\Custom_List\bin\Debug\Custom_List.exe.config
+C:\Users\wheeler\Desktop\School\C# git\Custom_List\Custom_List\bin\Debug\Custom_List.exe
+C:\Users\wheeler\Desktop\School\C# git\Custom_List\Custom_List\bin\Debug\Custom_List.pdb
+C:\Users\wheeler\Desktop\School\C# git\Custom_List\Custom_List\obj\Debug\Custom_List.csprojResolveAssemblyReference.cache
+C:\Users\wheeler\Desktop\School\C# git\Custom_List\Custom_List\obj\Debug\Custom_List.exe
+C:\Users\wheeler\Desktop\School\C# git\Custom_List\Custom_List\obj\Debug\Custom_List.pdb
