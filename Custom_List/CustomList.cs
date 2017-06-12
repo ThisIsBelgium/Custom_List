@@ -18,10 +18,8 @@ namespace Custom_List
             count = 0;
             capacity = 4;
             items = new T[capacity];
-
-             
         }
-        
+
         public T this[int index]
         {
             get
@@ -33,8 +31,8 @@ namespace Custom_List
                 items[index] = value;
             }
         }
-       
- 
+
+
         public void Add(T item)
         {
             if (count == capacity)
@@ -42,7 +40,7 @@ namespace Custom_List
                 Expand();
             }
             items[count] = item;
-            count++; 
+            count++;
         }
         public void Remove(T item)
         {
@@ -63,7 +61,7 @@ namespace Custom_List
             itemHolder = items;
             capacity *= 2;
             items = new T[capacity];
-            for (int i = 0; i<= count-1; i++)
+            for (int i = 0; i <= count - 1; i++)
             {
                 items[i] = itemHolder[i];
             }
@@ -72,7 +70,7 @@ namespace Custom_List
         {
             int a = 0;
             T[] itemHolder = new T[capacity];
-            for(int i = 0; i <= count-1; i++)
+            for (int i = 0; i <= count - 1; i++)
             {
                 if (i == position)
                 {
@@ -82,7 +80,7 @@ namespace Custom_List
                 itemHolder[i] = items[a];
                 a++;
             }
-            for(int i = 0; i <= count; i++)
+            for (int i = 0; i <= count; i++)
             {
                 items[i] = itemHolder[i];
             }
@@ -90,15 +88,58 @@ namespace Custom_List
         }
 
         public override string ToString()
-        {
-            string listString=null;
-            for(int i = 0; i <= count-1; i++)
+        { 
+            string listString = null;
+            for (int i = 0; i <= count - 1; i++)
             {
                 T value = items[i];
-                value.ToString();
-                listString += value + " ";
+                if (value is string)
+                {
+                    listString += value + " ";
+                }
+                else
+                {
+                    value.ToString();
+                    listString += value + " ";
+                }
             }
             return listString;
+        }
+        
+        public static CustomList<T> operator+ (CustomList<T> a,CustomList<T> b)
+        {
+            CustomList<T> list = new CustomList<T>();
+            for(int i = 0; i <= a.Count - 1; i++)
+            {
+                list.Add(a[i]);
+            }
+            for(int i = 0; i <= b.Count - 1; i++)
+            {
+                list.Add(b[i]);
+            }
+            return list;
+
+        }
+        
+        public static CustomList<T> operator-(CustomList<T> a, CustomList<T> b)
+        {
+            CustomList<T> list = new CustomList<T>();
+            for(int i = 0; i <= a.Count-1;i++)
+            {
+                T valueA = a[i];
+                T valueB = b[i];
+                if (valueA.Equals(valueB))
+                {
+
+                }
+                else
+                {
+                    list.Add(valueA);
+                }
+                
+
+            }
+            return list;
         }
         //public CustomList<T> zipper(T list)
         //{

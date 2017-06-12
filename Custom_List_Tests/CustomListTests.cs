@@ -260,50 +260,60 @@ namespace CustomListTests
             list.Add(1);
             list.Add(2);
             list.Add(3);
-            string expected = list.ToString();
-            Assert.AreEqual("1 2 3 ", expected);
+            string acutual = list.ToString();
+            Assert.AreEqual("1 2 3 ", acutual);
+        }
+        [TestMethod]
+
+        public void convert_listString_ToString()
+        {
+            CustomList<string> list = new CustomList<string>();
+            list.Add("Hi");
+            list.Add("Bye");
+            list.Add("Hello");
+            string acutual = list.ToString();
+            Assert.AreEqual("Hi Bye Hello ", acutual);
         }
         //adding lists
-        //[TestMethod]
+        [TestMethod]
 
-        //public void concat_list1List2_List3()
-        //{
-        //    CustomList<int> list = new CustomList<int>();
-        //    CustomList<int> list1 = new CustomList<int>();
-        //    CustomList<int> list2 = new CustomList<int>();
-        //    list.Add(1);
-        //    list.Add(2);
-        //    list.Add(3);
-        //    list1.Add(4);
-        //    list1.Add(5);
-        //    list1.Add(6);
-        //    list2.Add(1);
-        //    list2.Add(2);
-        //    list2.Add(3);
-        //    list2.Add(4);
-        //    list2.Add(5);
-        //    list2.Add(6);
-        //    CustomList<int> list3 = list + list1;
-        //    Assert.AreEqual(list2, list3);
-        //}
+        public void concat_list1List2_List3()
+        {
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list1.Add(4);
+            list1.Add(5);
+            list1.Add(6);
+            list2.Add(1);
+            list2.Add(2);
+            list2.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            list2.Add(6);
+            CustomList<int> list3 = list + list1;
+            Assert.AreEqual(list2.Count, list3.Count);
+        }
         //subtracting lists
-        //[TestMethod]
+        [TestMethod]
 
-        //public void subtract_list1list2_list3()
-        //{
-        //    CustomList<int> list = new CustomList<int>();
-        //    CustomList<int> list1 = new CustomList<int>();
-        //    CustomList<int> list2 = new CustomList<int>();
-        //    list.Add(1);
-        //    list.Add(2);
-        //    list1.Add(1);
-        //    list1.Add(1);
-        //    list2.Add(0);
-        //    list2.Add(1);
-        //    CustomList<int> list3 = list - list1;
-        //    Assert.AreEqual(list2, list3);
+        public void subtract_list1list2_list3()
+        {
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list1.Add(1);
+            list1.Add(1);
+            list2.Add(2);
+            CustomList<int> list3 = list - list1;
+            Assert.AreEqual(list2[0], list3[0]);
 
-        //}
+        }
         //zipper
         //[TestMethod]
 
