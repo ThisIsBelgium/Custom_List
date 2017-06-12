@@ -69,6 +69,10 @@ namespace Custom_List
         private void Compress(int position)
         {
             int a = 0;
+            if (Count == Capacity)
+            {
+                Expand();
+            }
             T[] itemHolder = new T[capacity];
             for (int i = 0; i <= count - 1; i++)
             {
@@ -141,10 +145,27 @@ namespace Custom_List
             }
             return list;
         }
-        //public CustomList<T> zipper(T list)
-        //{
+        public CustomList<T> Zipper (CustomList<T> b)
+        {
+            CustomList<T> tempList = new CustomList<T>();
+            int countValue;
+            if (Count <= b.Count)
+            {
+                countValue = Count;
+            }
+            else
+            {
+                countValue = b.Count;
+            }
+            for (int i = 0; i <= countValue - 1; i++)
+            {
+                tempList.Add(items[i]);
+                tempList.Add(b[i]);
+            }
+         
 
-        //}
+            return tempList;
+        }
 
     }
 }

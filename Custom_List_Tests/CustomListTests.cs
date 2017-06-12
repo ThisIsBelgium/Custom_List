@@ -58,9 +58,10 @@ namespace CustomListTests
 
         public void add_valueObject_checkIndex()
         {
+            TestObject test = new TestObject();
             CustomList<TestObject> list = new CustomList<TestObject>();
-            list.Add(new TestObject());
-            Assert.AreEqual(new TestObject(), list[0]);
+            list.Add(test);
+            Assert.AreEqual(test.test, list[0].test);
         }
 
         //adding values checking the prior indexes
@@ -114,12 +115,13 @@ namespace CustomListTests
 
         public void add_valueObject_checkPastIndex()
         {
+            TestObject test = new TestObject();
             CustomList<TestObject> list = new CustomList<TestObject>();
-            list.Add(new TestObject());
-            list.Add(new TestObject());
-            list.Add(new TestObject());
-            list.Add(new TestObject());
-            Assert.AreEqual(new TestObject(), list[0]);
+            list.Add(test);
+            list.Add(test);
+            list.Add(test);
+            list.Add(test);
+            Assert.AreEqual(test.test, list[0].test);
         }
         //adding value to check for default capacity
         [TestMethod]
@@ -237,7 +239,7 @@ namespace CustomListTests
             list.Add(first);
             list.Add(first);
             list.Remove(first);
-            Assert.AreEqual(first, list[0]);
+            Assert.AreEqual(first.test, list[0].test);
 
         }
         //removing value checking count of elements
@@ -315,26 +317,27 @@ namespace CustomListTests
 
         }
         //zipper
-        //[TestMethod]
+        [TestMethod]
 
-        //public void zip_list1list2_list3()
-        //{
-        //    CustomList<int> list = new CustomList<int>();
-        //    CustomList<int> list1 = new CustomList<int>();
-        //    CustomList<int> list2 = new CustomList<int>();
-        //    list.Add(1);
-        //    list.Add(3);
-        //    list.Add(5);
-        //    list1.Add(2);
-        //    list1.Add(4);
-        //    list2.Add(1);
-        //    list2.Add(2);
-        //    list2.Add(3);
-        //    list2.Add(4);
-        //    list2.Add(5);
-        //    list.zipper(list1);
-        //    Assert.AreEqual(list2, list);
+        public void zip_list1list2_list3()
+        {
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            list.Add(1);
+            list.Add(3);
+            list.Add(5);
+            list1.Add(2);
+            list1.Add(4);
+            list1.Add(6);
+            list2.Add(1);
+            list2.Add(2);
+            list2.Add(3);
+            list2.Add(4);
+            list2.Add(5);
+            CustomList<int> list3 = list.Zipper(list1);
+            Assert.AreEqual(list2[1], list3[1]);
 
-        //}
+        }
     }
 }

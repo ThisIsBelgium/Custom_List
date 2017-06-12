@@ -8,5 +8,6 @@ namespace Custom_List
 {
     public class TestObject
     {
+        public int test = 1;
     }
 }
