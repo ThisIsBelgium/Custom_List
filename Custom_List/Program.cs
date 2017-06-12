@@ -10,9 +10,13 @@ namespace Custom_List
     {
         static void Main(string[] args)
         {
-            List<TestObject> list = new List<TestObject>();
-            list.Add(new TestObject());
-            list.RemoveAt(0);
+            CustomList<int> list = new CustomList<int>();
+            list.Add(0);
+            list.Add(3);
+            list.Add(6);
+            list.Add(7);
+            list.Add(9);
+            list.Remove(6);
 
         }
     }
