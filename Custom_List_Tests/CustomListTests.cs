@@ -122,13 +122,13 @@ namespace CustomListTests
             Assert.AreEqual(new TestObject(), list[0]);
         }
         //adding value to check for default capacity
-        //[TestMethod]
-        //public void add_valueInt_checkForDefault()
-        //{
-        //    CustomList<int> list = new CustomList<int>();
-        //    list.Add(1);
-        //    Assert.AreEqual(4, list.capacity);
-        //}
+        [TestMethod]
+        public void add_valueInt_checkForDefault()
+        {
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            Assert.AreEqual(4, list.Capacity);
+        }
         //removing value checking for default of index
         [TestMethod]
 
@@ -261,7 +261,7 @@ namespace CustomListTests
             list.Add(2);
             list.Add(3);
             string expected = list.ToString();
-            Assert.AreEqual("123", expected);
+            Assert.AreEqual("1 2 3 ", expected);
         }
         //adding lists
         //[TestMethod]

@@ -89,10 +89,17 @@ namespace Custom_List
             count--;
         }
 
-        //public override string ToString()
-        //{
-
-        //}
+        public override string ToString()
+        {
+            string listString=null;
+            for(int i = 0; i <= count-1; i++)
+            {
+                T value = items[i];
+                value.ToString();
+                listString += value + " ";
+            }
+            return listString;
+        }
         //public CustomList<T> zipper(T list)
         //{
 
