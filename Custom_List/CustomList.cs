@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Custom_List
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         private T[] items;
         private int count;
@@ -68,7 +69,7 @@ namespace Custom_List
         }
         private void Compress(int position)
         {
-            int a = 0;
+            int skipCount = 0;
             if (Count == Capacity)
             {
                 Expand();
@@ -79,10 +80,10 @@ namespace Custom_List
                 if (i == position)
                 {
                     itemHolder[i] = items[i + 1];
-                    a++;
+                    skipCount++;
                 }
-                itemHolder[i] = items[a];
-                a++;
+                itemHolder[i] = items[skipCount];
+                skipCount++;
             }
             for (int i = 0; i <= count; i++)
             {
@@ -92,7 +93,7 @@ namespace Custom_List
         }
 
         public override string ToString()
-        { 
+        {
             string listString = null;
             for (int i = 0; i <= count - 1; i++)
             {
@@ -109,26 +110,26 @@ namespace Custom_List
             }
             return listString;
         }
-        
-        public static CustomList<T> operator+ (CustomList<T> a,CustomList<T> b)
+
+        public static CustomList<T> operator +(CustomList<T> a, CustomList<T> b)
         {
             CustomList<T> list = new CustomList<T>();
-            for(int i = 0; i <= a.Count - 1; i++)
+            for (int i = 0; i <= a.Count - 1; i++)
             {
                 list.Add(a[i]);
             }
-            for(int i = 0; i <= b.Count - 1; i++)
+            for (int i = 0; i <= b.Count - 1; i++)
             {
                 list.Add(b[i]);
             }
             return list;
 
         }
-        
-        public static CustomList<T> operator-(CustomList<T> a, CustomList<T> b)
+
+        public static CustomList<T> operator -(CustomList<T> a, CustomList<T> b)
         {
             CustomList<T> list = new CustomList<T>();
-            for(int i = 0; i <= a.Count-1;i++)
+            for (int i = 0; i <= a.Count - 1; i++)
             {
                 T valueA = a[i];
                 T valueB = b[i];
@@ -140,12 +141,12 @@ namespace Custom_List
                 {
                     list.Add(valueA);
                 }
-                
+
 
             }
             return list;
         }
-        public CustomList<T> Zipper (CustomList<T> b)
+        public CustomList<T> Zipper(CustomList<T> b)
         {
             CustomList<T> tempList = new CustomList<T>();
             int countValue;
@@ -162,9 +163,13 @@ namespace Custom_List
                 tempList.Add(items[i]);
                 tempList.Add(b[i]);
             }
-         
+
 
             return tempList;
+        }
+        public IEnumerator GetEnumerator()
+        {
+            return items.GetEnumerator();
         }
 
     }

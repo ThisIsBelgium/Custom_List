@@ -276,6 +276,41 @@ namespace CustomListTests
             string acutual = list.ToString();
             Assert.AreEqual("Hi Bye Hello ", acutual);
         }
+
+        [TestMethod]
+        public void convert_listDouble_ToString()
+        {
+            CustomList<double> list = new CustomList<double>();
+            list.Add(.5);
+            list.Add(1.8);
+            list.Add(3.6);
+            string acutual = list.ToString();
+            Assert.AreEqual("0.5 1.8 3.6 ", acutual);
+        }
+
+        [TestMethod]
+        public void convert_listBool_ToString()
+        {
+            CustomList<bool> list = new CustomList<bool>();
+            list.Add(false);
+            list.Add(true);
+            list.Add(true);
+            string acutual = list.ToString();
+            Assert.AreEqual("False True True ", acutual);
+        }
+
+        [TestMethod]
+        public void convert_listObject_ToString()
+        {
+            TestObject first = new TestObject();
+            CustomList<TestObject> list = new CustomList<TestObject>();
+            list.Add(first);
+            list.Add(first);
+            list.Add(first);
+            string acutual = list.ToString();
+            Assert.AreEqual("Custom_List.TestObject Custom_List.TestObject Custom_List.TestObject ", acutual);
+        }
+
         //adding lists
         [TestMethod]
 
@@ -319,7 +354,7 @@ namespace CustomListTests
         //zipper
         [TestMethod]
 
-        public void zip_list1list2_list3()
+        public void zip_list1list2Int_list3()
         {
             CustomList<int> list = new CustomList<int>();
             CustomList<int> list1 = new CustomList<int>();
@@ -335,7 +370,79 @@ namespace CustomListTests
             list2.Add(3);
             list2.Add(4);
             list2.Add(5);
+            list2.Add(6);
             CustomList<int> list3 = list.Zipper(list1);
+            Assert.AreEqual(list2[1], list3[1]);
+
+        }
+
+        [TestMethod]
+
+        public void zip_list1list2String_list3()
+        {
+            CustomList<string> list = new CustomList<string>();
+            CustomList<string> list1 = new CustomList<string>();
+            CustomList<string> list2 = new CustomList<string>();
+            list.Add("Hi");
+            list.Add("Foo");
+            list.Add("Bar");
+            list1.Add("Hello");
+            list1.Add("Bye");
+            list1.Add("Cya");
+            list2.Add("Hi");
+            list2.Add("Hello");
+            list2.Add("Foo");
+            list2.Add("Bye");
+            list2.Add("Bar");
+            list2.Add("Cya");
+            CustomList<string> list3 = list.Zipper(list1);
+            Assert.AreEqual(list2[1], list3[1]);
+
+        }
+
+        [TestMethod]
+        public void zip_list1list2Bool_list3()
+        {
+            CustomList<bool> list = new CustomList<bool>();
+            CustomList<bool> list1 = new CustomList<bool>();
+            CustomList<bool> list2 = new CustomList<bool>();
+            list.Add(true);
+            list.Add(false);
+            list.Add(true);
+            list1.Add(true);
+            list1.Add(false);
+            list1.Add(true);
+            list2.Add(true);
+            list2.Add(true);
+            list2.Add(false);
+            list2.Add(false);
+            list2.Add(true);
+            list2.Add(true);
+            CustomList<bool> list3 = list.Zipper(list1);
+            Assert.AreEqual(list2[1], list3[1]);
+
+        }
+
+        [TestMethod]
+
+        public void zip_list1list2Double_list3()
+        {
+            CustomList<double> list = new CustomList<double>();
+            CustomList<double> list1 = new CustomList<double>();
+            CustomList<double> list2 = new CustomList<double>();
+            list.Add(.5);
+            list.Add(1.5);
+            list.Add(3.6);
+            list1.Add(1.8);
+            list1.Add(39.8);
+            list1.Add(3.15);
+            list2.Add(.5);
+            list2.Add(1.8);
+            list2.Add(1.5);
+            list2.Add(39.8);
+            list2.Add(3.6);
+            list2.Add(3.15);
+            CustomList<double> list3 = list.Zipper(list1);
             Assert.AreEqual(list2[1], list3[1]);
 
         }
